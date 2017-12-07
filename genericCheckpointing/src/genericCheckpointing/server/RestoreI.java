@@ -1,1 +1,5 @@
-package genericCheckpointing.driver;
+package genericCheckpointing.server;
+
+public interface RestoreI extends StoreRestoreI {
+    
+}

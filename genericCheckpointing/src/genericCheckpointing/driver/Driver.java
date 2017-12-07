@@ -1,6 +1,13 @@
 package genericCheckpointing.driver;
 
-//import genericCheckpointing.util.ProxyCreator;
+import genericCheckpointing.server.RestoreI;
+import genericCheckpointing.server.StoreI;
+import genericCheckpointing.server.StoreRestoreI;
+import genericCheckpointing.util.MyAllTypesFirst;
+import genericCheckpointing.util.MyAllTypesSecond;
+import genericCheckpointing.util.ProxyCreator;
+import genericCheckpointing.util.SerializableObject;
+import genericCheckpointing.xmlStoreRestore.StoreRestoreHandler;
 
 // import the other types used in this file
 
@@ -13,18 +20,18 @@ public class Driver {
     int numObjs = 0;
     String file = args[2];
         
-	if(args != 3) {
-        System.err("Usage: <Mode> <NumObjs> <File>");
+	if(args.length != 3) {
+        System.err.println("Usage: <Mode> <NumObjs> <File>");
         System.exit(1);
     }
     
     if(args[0].equals("${arg0}") || args[1].equals("${arg1}") || args[2].equals("${arg2}")) {
-        System.err("Usage: <Mode> <NumObjs> <File>");
+        System.err.println("Usage: <Mode> <NumObjs> <File>");
         System.exit(1);
     }
         
     if(!(mode.equals("serdeser")) || !(mode.equals("deser"))) {
-        System.err("Mode must be 'serdeser' or 'deser'");
+        System.err.println("Mode must be 'serdeser' or 'deser'");
         System.exit(1);
     }
         
@@ -32,7 +39,7 @@ public class Driver {
         numObjs = Integer.parseInt(args[1]);
     }
     catch(NumberFormatException e) {
-        System.err("NumObjs must be an int");
+        System.err.println("NumObjs must be an int");
         System.exit(1);
     }
         
@@ -62,7 +69,7 @@ public class Driver {
 
 	// create a data structure to store the objects being serialized
         // NUM_OF_OBJECTS refers to the count for each of MyAllTypesFirst and MyAllTypesSecond
-	for (int i=0; i<NUM_OF_OBJECTS; i++) {
+	for (int i=0; i<numObjs; i++) {
 
 	    // FIXME: create these object instances correctly using an explicit value constructor
 	    // use the index variable of this loop to change the values of the arguments to these constructors
@@ -70,17 +77,17 @@ public class Driver {
 	    mySecond = new MyAllTypesSecond();
 
 	    // FIXME: store myFirst and mySecond in the data structure
-	    ((StoreI) cpointRef).writeObj(myFirst, "XML");
-	    ((StoreI) cpointRef).writeObj(mySecond, "XML");
+	    //((StoreI) cpointRef).writeObj(myFirst, "XML");
+	    //((StoreI) cpointRef).writeObj(mySecond, "XML");
 
 	}
 
 	SerializableObject myRecordRet;
 
 	// create a data structure to store the returned ojects
-	for (int j=0; j<2*NUM_OF_OBJECTS; j++) {
+	for (int j=0; j<2*numObjs; j++) {
 
-	    myRecordRet = ((RestoreI) cpointRef).readObj("XML");
+	    //myRecordRet = ((RestoreI) cpointRef).readObj("XML");
 	    // FIXME: store myRecordRet in the vector
 	}
 

@@ -1,4 +1,4 @@
-package genericCheckpointing.driver;
+package genericCheckpointing.util;
 
 public class MyAllTypesSecond extends SerializableObject {
     
