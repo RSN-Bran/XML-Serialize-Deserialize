@@ -1,7 +1,6 @@
-
 package genericCheckpointing.driver;
 
-import genericCheckpointing.util.ProxyCreator;
+//import genericCheckpointing.util.ProxyCreator;
 
 // import the other types used in this file
 
@@ -9,8 +8,35 @@ public class Driver {
     
     public static void main(String[] args) {
 	
-	// FIXME: read the value of checkpointFile from the command line
-	
+    //Initialize parameters
+    String mode = args[0];
+    int numObjs = 0;
+    String file = args[2];
+        
+	if(args != 3) {
+        System.err("Usage: <Mode> <NumObjs> <File>");
+        System.exit(1);
+    }
+    
+    if(args[0].equals("${arg0}") || args[1].equals("${arg1}") || args[2].equals("${arg2}")) {
+        System.err("Usage: <Mode> <NumObjs> <File>");
+        System.exit(1);
+    }
+        
+    if(!(mode.equals("serdeser")) || !(mode.equals("deser"))) {
+        System.err("Mode must be 'serdeser' or 'deser'");
+        System.exit(1);
+    }
+        
+    try{
+        numObjs = Integer.parseInt(args[1]);
+    }
+    catch(NumberFormatException e) {
+        System.err("NumObjs must be an int");
+        System.exit(1);
+    }
+        
+    
 	ProxyCreator pc = new ProxyCreator();
 	
 	// create an instance of StoreRestoreHandler (which implements
@@ -40,8 +66,8 @@ public class Driver {
 
 	    // FIXME: create these object instances correctly using an explicit value constructor
 	    // use the index variable of this loop to change the values of the arguments to these constructors
-	    myFirst = new MyAllTypesFirst(...);
-	    mySecond = new MyAllTypesSecond(..);
+	    myFirst = new MyAllTypesFirst();
+	    mySecond = new MyAllTypesSecond();
 
 	    // FIXME: store myFirst and mySecond in the data structure
 	    ((StoreI) cpointRef).writeObj(myFirst, "XML");
