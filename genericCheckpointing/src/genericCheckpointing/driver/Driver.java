@@ -33,7 +33,7 @@ public class Driver {
             System.exit(1);
         }
 
-        if(!(mode.equals("serdeser")) || !(mode.equals("deser"))) {
+        if(!((mode.equals("serdeser")) || (mode.equals("deser")))) {
             System.err.println("Mode must be 'serdeser' or 'deser'");
             System.exit(1);
         }
@@ -53,12 +53,12 @@ public class Driver {
         // the InvocationHandler
 
         // create a proxy
-        StoreRestoreI cpointRef = (StoreRestoreI) pc.createProxy(
-                                     new Class[] {
-                                         StoreI.class, RestoreI.class
-                                     }, 
-                                     new StoreRestoreHandler()
-                                     );
+        //StoreRestoreI cpointRef = (StoreRestoreI) pc.createProxy(
+        //                             new Class[] {
+        //                                 StoreI.class, RestoreI.class
+        //                             }, 
+        //                             new StoreRestoreHandler()
+        //                             );
 
         // FIXME: invoke a method on the handler instance to set the file name for checkpointFile and open the file
 
@@ -66,6 +66,8 @@ public class Driver {
         MyAllTypesSecond  mySecond;
 
         RandomVals randVals = new RandomVals();
+        
+        System.out.println(randVals.randFloat());
         if(mode.equals("serdeser")) {
                 // Use an if/switch to proceed according to the command line argument
         // For deser, just deserliaze the input file into the data structure and then print the objects
