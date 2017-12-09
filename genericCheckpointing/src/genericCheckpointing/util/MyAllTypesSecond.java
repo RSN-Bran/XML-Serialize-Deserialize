@@ -44,4 +44,14 @@ public class MyAllTypesSecond extends SerializableObject {
     public char getChar() {
         return secondChar;
     }
+    
+    public String toString() {
+        String str = "";
+        str = str + "myDouble: " + secondDouble + "\n";
+        str = str + "myFloat: " + secondFloat + "\n";
+        str = str + "myShort: " + secondShort + "\n";
+        str = str + "myChar: " + secondChar + "\n";
+        
+        return str;
+    }
 }

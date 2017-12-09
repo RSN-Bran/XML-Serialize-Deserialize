@@ -1,6 +1,7 @@
 package genericCheckpointing.driver;
 
 import java.util.Vector;
+import java.util.ArrayList;
 
 import genericCheckpointing.server.RestoreI;
 import genericCheckpointing.server.StoreI;
@@ -10,7 +11,9 @@ import genericCheckpointing.util.MyAllTypesSecond;
 import genericCheckpointing.util.ProxyCreator;
 import genericCheckpointing.util.SerializableObject;
 import genericCheckpointing.util.RandomVals;
+import genericCheckpointing.util.FileProcessor;
 import genericCheckpointing.xmlStoreRestore.StoreRestoreHandler;
+
 
 // import the other types used in this file
 
@@ -46,19 +49,20 @@ public class Driver {
             System.exit(1);
         }
 
-
+        FileProcessor fp = new FileProcessor(file);
+        
         ProxyCreator pc = new ProxyCreator();
 
         // create an instance of StoreRestoreHandler (which implements
         // the InvocationHandler
 
         // create a proxy
-        //StoreRestoreI cpointRef = (StoreRestoreI) pc.createProxy(
-        //                             new Class[] {
-        //                                 StoreI.class, RestoreI.class
-        //                             }, 
-        //                             new StoreRestoreHandler()
-        //                             );
+        StoreRestoreI cpointRef = (StoreRestoreI) pc.createProxy(
+                                     new Class[] {
+                                         StoreI.class, RestoreI.class
+                                     }, 
+                                     new StoreRestoreHandler()
+                                     );
 
         // FIXME: invoke a method on the handler instance to set the file name for checkpointFile and open the file
 
@@ -67,7 +71,8 @@ public class Driver {
 
         RandomVals randVals = new RandomVals();
         
-        System.out.println(randVals.randFloat());
+        Vector<SerializableObject> createdObjects = new Vector<SerializableObject>();
+        
         if(mode.equals("serdeser")) {
                 // Use an if/switch to proceed according to the command line argument
         // For deser, just deserliaze the input file into the data structure and then print the objects
@@ -80,12 +85,17 @@ public class Driver {
 
             // FIXME: create these object instances correctly using an explicit value constructor
             // use the index variable of this loop to change the values of the arguments to these constructors
-               myFirst = new MyAllTypesFirst();
-               mySecond = new MyAllTypesSecond();
+               myFirst = new MyAllTypesFirst(randVals.randInt(), randVals.randLong(), randVals.randString(), randVals.randBoolean());
+               mySecond = new MyAllTypesSecond(randVals.randDouble(), randVals.randFloat(), randVals.randShort(), randVals.randChar());
+               
+               System.out.println(myFirst.toString());
+               System.out.println(mySecond.toString());
+               createdObjects.add(myFirst);
+               createdObjects.add(mySecond);
 
             // FIXME: store myFirst and mySecond in the data structure
-            //((StoreI) cpointRef).writeObj(myFirst, "XML");
-            //((StoreI) cpointRef).writeObj(mySecond, "XML");
+            ((StoreI) cpointRef).writeObj(myFirst, "XML");
+            ((StoreI) cpointRef).writeObj(mySecond, "XML");
 
            }
 
@@ -94,9 +104,19 @@ public class Driver {
            // create a data structure to store the returned ojects
            for (int j=0; j<2*numObjs; j++) {
 
-            //myRecordRet = ((RestoreI) cpointRef).readObj("XML");
+               myRecordRet = ((RestoreI) cpointRef).readObj("XML");
             // FIXME: store myRecordRet in the vector
            }
+            
+            ArrayList<String> outputLines = new ArrayList<String>();
+            for(int i = 0; i < createdObjects.size(); i++) {
+                outputLines.add("<DPSerialization>\n");
+                    outputLines.add("\t<complexType xsi:type=\"" +  createdObjects.get(i).getClass().getName() + "\">\n");
+                
+                    outputLines.add("\t</complexType>\n");
+                outputLines.add("</DPSerialization>\n");
+            }
+            fp.writeFile(outputLines);
 
         // FIXME: invoke a method on the handler to close the file (if it hasn't already been closed)
 
@@ -105,8 +125,5 @@ public class Driver {
         // is used for key-value based data structures
 
         }   
-        else {
-
-        }
     }
 }

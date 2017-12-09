@@ -44,4 +44,14 @@ public class MyAllTypesFirst extends SerializableObject {
     public boolean getBoolean() {
         return firstBoolean;
     }
+    
+    public String toString() {
+        String str = "";
+        str = str + "myInt: " + firstInt + "\n";
+        str = str + "myLong: " + firstLong + "\n";
+        str = str + "myString: " + firstString + "\n";
+        str = str + "myBoolean: " + firstBoolean + "\n";
+        
+        return str;
+    }
 }

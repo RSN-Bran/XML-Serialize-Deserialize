@@ -1,0 +1,32 @@
+<DPSerialization>
+	<complexType xsi:type="genericCheckpointing.util.MyAllTypesFirst">
+	</complexType>
+</DPSerialization>
+<DPSerialization>
+	<complexType xsi:type="genericCheckpointing.util.MyAllTypesSecond">
+	</complexType>
+</DPSerialization>
+<DPSerialization>
+	<complexType xsi:type="genericCheckpointing.util.MyAllTypesFirst">
+	</complexType>
+</DPSerialization>
+<DPSerialization>
+	<complexType xsi:type="genericCheckpointing.util.MyAllTypesSecond">
+	</complexType>
+</DPSerialization>
+<DPSerialization>
+	<complexType xsi:type="genericCheckpointing.util.MyAllTypesFirst">
+	</complexType>
+</DPSerialization>
+<DPSerialization>
+	<complexType xsi:type="genericCheckpointing.util.MyAllTypesSecond">
+	</complexType>
+</DPSerialization>
+<DPSerialization>
+	<complexType xsi:type="genericCheckpointing.util.MyAllTypesFirst">
+	</complexType>
+</DPSerialization>
+<DPSerialization>
+	<complexType xsi:type="genericCheckpointing.util.MyAllTypesSecond">
+	</complexType>
+</DPSerialization>
