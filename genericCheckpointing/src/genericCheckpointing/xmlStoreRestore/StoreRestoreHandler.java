@@ -12,6 +12,9 @@ public class StoreRestoreHandler implements InvocationHandler  {
     
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) {
+        if("writeObj".equals(method.getName())) {
+            
+        }
         return null;
     }
 }

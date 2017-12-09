@@ -13,7 +13,8 @@ import genericCheckpointing.util.SerializableObject;
 import genericCheckpointing.util.RandomVals;
 import genericCheckpointing.util.FileProcessor;
 import genericCheckpointing.xmlStoreRestore.StoreRestoreHandler;
-
+import genericCheckpointing.xmlStoreRestore.Serialize;
+import genericCheckpointing.xmlStoreRestore.Deserialize;
 
 // import the other types used in this file
 
@@ -87,13 +88,11 @@ public class Driver {
             // use the index variable of this loop to change the values of the arguments to these constructors
                myFirst = new MyAllTypesFirst(randVals.randInt(), randVals.randLong(), randVals.randString(), randVals.randBoolean());
                mySecond = new MyAllTypesSecond(randVals.randDouble(), randVals.randFloat(), randVals.randShort(), randVals.randChar());
+               mySecond = new MyAllTypesSecond(randVals.randDouble(), randVals.randFloat(), randVals.randShort(), randVals.randChar());
                
-               System.out.println(myFirst.toString());
-               System.out.println(mySecond.toString());
                createdObjects.add(myFirst);
                createdObjects.add(mySecond);
 
-            // FIXME: store myFirst and mySecond in the data structure
             ((StoreI) cpointRef).writeObj(myFirst, "XML");
             ((StoreI) cpointRef).writeObj(mySecond, "XML");
 
@@ -108,13 +107,22 @@ public class Driver {
             // FIXME: store myRecordRet in the vector
            }
             
+            Serialize serialize = new Serialize();
             ArrayList<String> outputLines = new ArrayList<String>();
             for(int i = 0; i < createdObjects.size(); i++) {
                 outputLines.add("<DPSerialization>\n");
-                    outputLines.add("\t<complexType xsi:type=\"" +  createdObjects.get(i).getClass().getName() + "\">\n");
+                outputLines.add("\t<complexType xsi:type=\"" +  createdObjects.get(i).getClass().getName() + "\">\n");
+                    
+                outputLines.add(serialize.convert(createdObjects.get(i)));
                 
-                    outputLines.add("\t</complexType>\n");
-                outputLines.add("</DPSerialization>\n");
+                outputLines.add("\t</complexType>\n");
+                if(i == createdObjects.size()-1) {
+                    outputLines.add("</DPSerialization>");
+                }
+                else {
+                    outputLines.add("</DPSerialization>\n");
+                }
+                
             }
             fp.writeFile(outputLines);
 

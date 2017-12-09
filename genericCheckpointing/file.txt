@@ -1,32 +1,64 @@
 <DPSerialization>
 	<complexType xsi:type="genericCheckpointing.util.MyAllTypesFirst">
+		<firstInt xsi:type="int">1834730942<int>
+		<firstLong xsi:type="long">2443472734<long>
+		<firstString xsi:type="String">daRC<String>
+		<firstBoolean xsi:type="boolean">false<boolean>
 	</complexType>
 </DPSerialization>
 <DPSerialization>
 	<complexType xsi:type="genericCheckpointing.util.MyAllTypesSecond">
+		<secondDouble xsi:type="double">6165.339451538<double>
+		<secondFloat xsi:type="float">44616.12<float>
+		<secondShort xsi:type="short">14384<short>
+		<secondChar xsi:type="char">O<char>
 	</complexType>
 </DPSerialization>
 <DPSerialization>
 	<complexType xsi:type="genericCheckpointing.util.MyAllTypesFirst">
+		<firstInt xsi:type="int">925639478<int>
+		<firstLong xsi:type="long">4845513599<long>
+		<firstString xsi:type="String">qEi<String>
+		<firstBoolean xsi:type="boolean">false<boolean>
 	</complexType>
 </DPSerialization>
 <DPSerialization>
 	<complexType xsi:type="genericCheckpointing.util.MyAllTypesSecond">
+		<secondDouble xsi:type="double">9153762.745388<double>
+		<secondFloat xsi:type="float">3.54765696E8<float>
+		<secondShort xsi:type="short">15721<short>
+		<secondChar xsi:type="char">G<char>
 	</complexType>
 </DPSerialization>
 <DPSerialization>
 	<complexType xsi:type="genericCheckpointing.util.MyAllTypesFirst">
+		<firstInt xsi:type="int">188561390<int>
+		<firstLong xsi:type="long">1272601479<long>
+		<firstString xsi:type="String">BiFvOt<String>
+		<firstBoolean xsi:type="boolean">true<boolean>
 	</complexType>
 </DPSerialization>
 <DPSerialization>
 	<complexType xsi:type="genericCheckpointing.util.MyAllTypesSecond">
+		<secondDouble xsi:type="double">54615.36<double>
+		<secondFloat xsi:type="float">5.7948524E7<float>
+		<secondShort xsi:type="short">7404<short>
+		<secondChar xsi:type="char">l<char>
 	</complexType>
 </DPSerialization>
 <DPSerialization>
 	<complexType xsi:type="genericCheckpointing.util.MyAllTypesFirst">
+		<firstInt xsi:type="int">1548156058<int>
+		<firstLong xsi:type="long">5108169363<long>
+		<firstString xsi:type="String">xi<String>
+		<firstBoolean xsi:type="boolean">true<boolean>
 	</complexType>
 </DPSerialization>
 <DPSerialization>
 	<complexType xsi:type="genericCheckpointing.util.MyAllTypesSecond">
+		<secondDouble xsi:type="double">225.9142<double>
+		<secondFloat xsi:type="float">0.6283755<float>
+		<secondShort xsi:type="short">30383<short>
+		<secondChar xsi:type="char">m<char>
 	</complexType>
 </DPSerialization>
