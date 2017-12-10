@@ -2,55 +2,84 @@ package genericCheckpointing.util;
 
 public class MyAllTypesFirst extends SerializableObject {
     
-    private int firstInt;
-    private long firstLong;
-    private String firstString;
-    private boolean firstBoolean;
+    private int MyInt;
+    private long MyLong;
+    private String MyString;
+    private boolean MyBoolean;
+    
+    private int MyOtherInt;
+    private long MyOtherLong;
+    private String MyOtherString;
+    private boolean MyOtherBoolean;
     
     public MyAllTypesFirst() {
         
     }
     public MyAllTypesFirst(int _firstInt, long _firstLong, String _firstString, boolean _firstBoolean) {
-        firstInt = _firstInt;
-        firstLong = _firstLong;
-        firstString = _firstString;
-        firstBoolean = _firstBoolean;
+        MyInt = _firstInt;
+        MyLong = _firstLong;
+        MyString = _firstString;
+        MyBoolean = _firstBoolean;
     }
     
-    public void setInt(int newInt) {
-        firstInt = newInt;
+    public void setMyInt(int newInt) {
+        MyInt = newInt;
     }
-    public int getInt() {
-        return firstInt;
+    public int getMyInt() {
+        return MyInt;
     }
-    
-    public void setLong(long newLong) {
-        firstLong = newLong;
+    public void setMyOtherInt(int newInt) {
+        MyOtherInt = newInt;
     }
-    public long getLong() {
-        return firstLong;
-    }
-    
-    public void setString(String newString) {
-        firstString = newString;
-    }
-    public String getString() {
-        return firstString;
+    public int getMyOtherInt() {
+        return MyOtherInt;
     }
     
-    public void setBoolean(boolean newBoolean) {
-        firstBoolean = newBoolean;
+    public void setMyLong(long newLong) {
+        MyLong = newLong;
     }
-    public boolean getBoolean() {
-        return firstBoolean;
+    public long getMyLong() {
+        return MyLong;
+    }
+    public void setMyOtherLong(long newLong) {
+        MyOtherLong = newLong;
+    }
+    public long getMyOtherLong() {
+        return MyOtherLong;
+    }
+    
+    public void setMyString(String newString) {
+        MyString = newString;
+    }
+    public String getMyString() {
+        return MyString;
+    }
+    public void setMyOtherString(String newString) {
+        MyOtherString = newString;
+    }
+    public String getMyOtherString() {
+        return MyOtherString;
+    }
+    
+    public void setMyBoolean(boolean newBoolean) {
+        MyBoolean = newBoolean;
+    }
+    public boolean getMyBoolean() {
+        return MyBoolean;
+    }
+    public void setMyOtherBoolean(boolean newBoolean) {
+        MyOtherBoolean = newBoolean;
+    }
+    public boolean getMyOtherBoolean() {
+        return MyOtherBoolean;
     }
     
     public String toString() {
         String str = "";
-        str = str + "myInt: " + firstInt + "\n";
-        str = str + "myLong: " + firstLong + "\n";
-        str = str + "myString: " + firstString + "\n";
-        str = str + "myBoolean: " + firstBoolean + "\n";
+        str = str + "myInt: " + MyInt + "\n";
+        str = str + "myLong: " + MyLong + "\n";
+        str = str + "myString: " + MyString + "\n";
+        str = str + "myBoolean: " + MyBoolean + "\n";
         
         return str;
     }
