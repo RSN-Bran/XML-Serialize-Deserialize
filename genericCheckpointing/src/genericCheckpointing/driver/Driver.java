@@ -108,7 +108,7 @@ public class Driver {
            }
             
             Serialize serialize = new Serialize();
-            ArrayList<String> outputLines = new ArrayList<String>();
+            Vector<String> outputLines = new Vector<String>();
             for(int i = 0; i < createdObjects.size(); i++) {
                 outputLines.add("<DPSerialization>\n");
                 outputLines.add("\t<complexType xsi:type=\"" +  createdObjects.get(i).getClass().getName() + "\">\n");
@@ -132,6 +132,12 @@ public class Driver {
         // The comparison should use the equals and hashCode methods. Note that hashCode 
         // is used for key-value based data structures
 
-        }   
+        }
+        Vector<SerializableObject> readObjects = new Vector<SerializableObject>();
+        
+        fp.readFile(readObjects);
+        for(int i = 0; i < readObjects.size(); i++) {
+            System.out.println(readObjects.get(i).toString());
+        }
     }
 }

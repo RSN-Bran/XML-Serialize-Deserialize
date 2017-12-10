@@ -82,6 +82,10 @@ public class MyAllTypesSecond extends SerializableObject {
         str = str + "myFloat: " + MyFloatT + "\n";
         str = str + "myShort: " + MyShortT + "\n";
         str = str + "myChar: " + MyCharT + "\n";
+        str = str + "myOtherDouble: " + MyOtherDoubleT + "\n";
+        str = str + "myOtherFloat: " + MyOtherFloatT + "\n";
+        str = str + "myOtherShort: " + MyOtherShortT + "\n";
+        str = str + "myOtherChar: " + MyOtherCharT + "\n";
         
         return str;
     }

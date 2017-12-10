@@ -80,6 +80,10 @@ public class MyAllTypesFirst extends SerializableObject {
         str = str + "myLong: " + MyLong + "\n";
         str = str + "myString: " + MyString + "\n";
         str = str + "myBoolean: " + MyBoolean + "\n";
+        str = str + "myOtherInt: " + MyOtherInt + "\n";
+        str = str + "myOtherLong: " + MyOtherLong + "\n";
+        str = str + "myOtherString: " + MyOtherString + "\n";
+        str = str + "myOtherBoolean: " + MyOtherBoolean + "\n";
         
         return str;
     }

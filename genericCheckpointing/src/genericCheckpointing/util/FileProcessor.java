@@ -10,8 +10,9 @@ import java.io.FileWriter;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Vector;
 
+import genericCheckpointing.xmlStoreRestore.Deserialize;
 
 public class FileProcessor {
     
@@ -32,15 +33,36 @@ public class FileProcessor {
     * @param (TreeBuilder) tree - the tree to be worked on
     * @return (void)
     */
-    public void readFile() {
+    public void readFile(Vector<SerializableObject> objects) {
         File inFile = new File(fileName);
         BufferedReader read = null;
+        
+        Deserialize deserialize = new Deserialize();
         
         try {
             read = new BufferedReader(new FileReader(inFile));
             String line;
+            
+            boolean startReading = false;
+            SerializableObject current = null;
             while((line = read.readLine()) != null) {
-                             
+                if(line.contains("MyAllTypesFirst")){
+                    current = new MyAllTypesFirst();
+                    startReading = true;
+                }
+                else if(line.contains("MyAllTypesSecond")){
+                    current = new MyAllTypesSecond();
+                    startReading = true;
+                }
+                
+                else if(line.equals("\t</complexType>")) {
+                    startReading = false;
+                    objects.add(current);
+                }
+                
+                else if(startReading) {
+                    deserialize.convert(current, line);
+                }
             }
         }
         //Catch File Not Found
@@ -64,7 +86,7 @@ public class FileProcessor {
         }
     }
     
-    public void writeFile(ArrayList<String> lines) {
+    public void writeFile(Vector<String> lines) {
          try{
             FileWriter fw = new FileWriter(fileName);
             BufferedWriter bw = new BufferedWriter(fw);
