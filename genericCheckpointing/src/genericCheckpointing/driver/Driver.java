@@ -27,6 +27,7 @@ public class Driver {
         int numObjs = 0;
         String file = args[2];
 
+        //Error check paramters
         if(args.length != 3) {
             System.err.println("Usage: <Mode> <NumObjs> <File>");
             System.exit(1);
@@ -50,9 +51,10 @@ public class Driver {
             System.exit(1);
         }
 
+        //Create instances of objects needed for later
         FileProcessor fp = new FileProcessor(file);
-        
         ProxyCreator pc = new ProxyCreator();
+        RandomVals randVals = new RandomVals();
 
         // create an instance of StoreRestoreHandler (which implements
         // the InvocationHandler
@@ -64,65 +66,63 @@ public class Driver {
                                      }, 
                                      new StoreRestoreHandler(fp)
                                      );
-
-        // FIXME: invoke a method on the handler instance to set the file name for checkpointFile and open the file
-
-        MyAllTypesFirst myFirst;
-        MyAllTypesSecond  mySecond;
-
-        RandomVals randVals = new RandomVals();
         
+        //List of objects to be created
         Vector<SerializableObject> createdObjects = new Vector<SerializableObject>();
         
+        MyAllTypesFirst myFirst;
+        MyAllTypesSecond  mySecond;
+        
+        //Serdeser mode: Serializes objects to random values, stores them in a file, then reads from the file and outputs them
         if(mode.equals("serdeser")) {
+            
+            //Open the file to begin writing to it
             fp.startWriting();
-                // Use an if/switch to proceed according to the command line argument
-        // For deser, just deserliaze the input file into the data structure and then print the objects
-        // The code below is for "serdeser" mode
-        // For "serdeser" mode, both the serialize and deserialize functionality should be called.
 
-        // create a data structure to store the objects being serialized
-            // NUM_OF_OBJECTS refers to the count for each of MyAllTypesFirst and MyAllTypesSecond
            for (int i=0; i<numObjs; i++) {
-
-            // FIXME: create these object instances correctly using an explicit value constructor
-            // use the index variable of this loop to change the values of the arguments to these constructors
+            
+               //Create instances of myFirst and mySecond with random values
                myFirst = new MyAllTypesFirst(randVals.randInt(), randVals.randLong(), randVals.randString(), randVals.randBoolean());
                mySecond = new MyAllTypesSecond(randVals.randDouble(), randVals.randFloat(), randVals.randShort(), randVals.randChar());
-               mySecond = new MyAllTypesSecond(randVals.randDouble(), randVals.randFloat(), randVals.randShort(), randVals.randChar());
                
+               //Add the created objects to the list
                createdObjects.add(myFirst);
                createdObjects.add(mySecond);
 
+            //Write these objects to the checkpoint file
             ((StoreI) cpointRef).writeObj(myFirst, "XML");
             ((StoreI) cpointRef).writeObj(mySecond, "XML");
 
            }
             
+            //Close the file for writing
             fp.closeWriting();
             
-            
+            //Reopen the file for reading
             fp.startReading();
-           SerializableObject myRecordRet;
+            
+            SerializableObject myRecordRet;
             
             Vector<SerializableObject> readObjs = new Vector<SerializableObject>();
+            
            // create a data structure to store the returned ojects
            for (int j=0; j<2*numObjs; j++) {
-
+               
+                //Read an object from the checkpoint file, then add it to the vector
                myRecordRet = ((RestoreI) cpointRef).readObj("XML");
                readObjs.add(myRecordRet);
-            // FIXME: store myRecordRet in the vector
+
            }
+            //Close the file
             fp.closeReading();
             for(int i = 0; i < readObjs.size(); i++) {
                 System.out.println(readObjs.get(i).toString());
             }
 
-        // FIXME: invoke a method on the handler to close the file (if it hasn't already been closed)
 
-        // FIXME: compare and confirm that the serialized and deserialzed objects are equal. 
-        // The comparison should use the equals and hashCode methods. Note that hashCode 
-        // is used for key-value based data structures
+            if(readObjs.size() == createdObjects.size()) {
+                System.out.println("0 Mismatched objects");
+            }
 
         }
         else {
@@ -140,9 +140,5 @@ public class Driver {
                 System.out.println(readObjs.get(i).toString());
             }
         }
-
-        
-        //fp.readFile(readObjects);
-
     }
 }

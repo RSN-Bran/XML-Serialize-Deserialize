@@ -1,5 +1,7 @@
 package genericCheckpointing.util;
 
+import java.util.Objects;
+
 public class MyAllTypesFirst extends SerializableObject {
     
     private int MyInt;
@@ -98,5 +100,25 @@ public class MyAllTypesFirst extends SerializableObject {
         str = str + "myOtherBoolean: " + MyOtherBoolean + "\n";
         
         return str;
+    }
+    
+    public boolean equals(Object object) {
+        if(this == object) {return true;}
+        if(object == null) {return false;}
+        if(getClass() != object.getClass()) {return false;}
+        MyAllTypesFirst param = (MyAllTypesFirst) object;
+        if(MyInt == param.MyInt && 
+           MyOtherInt == param.MyOtherInt && 
+           MyLong == param.MyLong &&
+           MyOtherLong == param.MyOtherLong &&
+           MyBoolean == param.MyBoolean &&
+           MyOtherBoolean == param.MyOtherBoolean &&
+           MyString.equals(param.MyString) &&
+           MyOtherString.equals(param.MyOtherString)) {return true;}
+        return false;
+    }
+    
+    public int hashCode() {
+        return Objects.hash(MyInt, MyOtherInt, MyLong, MyOtherLong, MyString, MyOtherString, MyBoolean, MyOtherBoolean);
     }
 }
