@@ -30,14 +30,14 @@ will receive a grade of F for the course for any additional
 offense.”
 
 Brandon Sultana
-[Date: ]
+[Date: 12/11/17]
 
 -----------------------------------------------------------------------
 
 Provide justification for Data Structures used in this assignment in
 term of Big O complexity (time and/or space)
 
-Use of an ArrayList for storing the lines of the input file
+Use of a Vector for storing the lines of the input file
 O(n) for time and space complexity. Items simply added to a contained array using O(1). Items copied over to a new array if space runs out using O(n).
 
 -----------------------------------------------------------------------

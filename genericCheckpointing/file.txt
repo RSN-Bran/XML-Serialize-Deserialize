@@ -1,61 +1,60 @@
 <DPSerialization>
 	<complexType xsi:type="genericCheckpointing.util.MyAllTypesFirst">
-		<MyInt xsi:type="int">928500955<int>
-		<MyLong xsi:type="long">4466358914<long>
-		<MyString xsi:type="String">jHvcG<String>
+		<MyInt xsi:type="int">151905742<int>
+		<MyLong xsi:type="long">2584093380<long>
+		<MyString xsi:type="String">qXTxo<String>
 		<MyBoolean xsi:type="boolean">false<boolean>
 		<MyOtherBoolean xsi:type="boolean">false<boolean>
 	</complexType>
 </DPSerialization><DPSerialization>
 	<complexType xsi:type="genericCheckpointing.util.MyAllTypesSecond">
-		<MyDoubleT xsi:type="double">878.356194294<double>
-		<MyFloatT xsi:type="float">2674.5<float>
-		<MyShortT xsi:type="short">18792<short>
-		<MyCharT xsi:type="char">W<char>
+		<MyDoubleT xsi:type="double">5.5278474881756E8<double>
+		<MyFloatT xsi:type="float">623357.94<float>
+		<MyShortT xsi:type="short">24005<short>
+		<MyCharT xsi:type="char">g<char>
 	</complexType>
 </DPSerialization><DPSerialization>
 	<complexType xsi:type="genericCheckpointing.util.MyAllTypesFirst">
-		<MyInt xsi:type="int">415503523<int>
-		<MyLong xsi:type="long">3735296354<long>
-		<MyString xsi:type="String">r<String>
+		<MyInt xsi:type="int">917141066<int>
+		<MyLong xsi:type="long">4950307024<long>
+		<MyString xsi:type="String">COCqgG<String>
 		<MyBoolean xsi:type="boolean">false<boolean>
 		<MyOtherBoolean xsi:type="boolean">false<boolean>
 	</complexType>
 </DPSerialization><DPSerialization>
 	<complexType xsi:type="genericCheckpointing.util.MyAllTypesSecond">
-		<MyDoubleT xsi:type="double">73489.888347<double>
-		<MyFloatT xsi:type="float">5.7217939E8<float>
-		<MyShortT xsi:type="short">28578<short>
-		<MyCharT xsi:type="char">T<char>
+		<MyDoubleT xsi:type="double">721459.578<double>
+		<MyFloatT xsi:type="float">6385383.0<float>
+		<MyShortT xsi:type="short">28773<short>
+		<MyCharT xsi:type="char">K<char>
 	</complexType>
 </DPSerialization><DPSerialization>
 	<complexType xsi:type="genericCheckpointing.util.MyAllTypesFirst">
-		<MyInt xsi:type="int">1115505536<int>
-		<MyLong xsi:type="long">3699043476<long>
-		<MyString xsi:type="String">kquv<String>
+		<MyInt xsi:type="int">260972471<int>
+		<MyLong xsi:type="long">3588765952<long>
+		<MyString xsi:type="String">TCHs<String>
+		<MyBoolean xsi:type="boolean">false<boolean>
+		<MyOtherBoolean xsi:type="boolean">false<boolean>
+	</complexType>
+</DPSerialization><DPSerialization>
+	<complexType xsi:type="genericCheckpointing.util.MyAllTypesSecond">
+		<MyFloatT xsi:type="float">2.77625824E8<float>
+		<MyShortT xsi:type="short">17559<short>
+		<MyCharT xsi:type="char">b<char>
+	</complexType>
+</DPSerialization><DPSerialization>
+	<complexType xsi:type="genericCheckpointing.util.MyAllTypesFirst">
+		<MyInt xsi:type="int">464617494<int>
+		<MyLong xsi:type="long">4780326336<long>
+		<MyString xsi:type="String">DR<String>
 		<MyBoolean xsi:type="boolean">true<boolean>
 		<MyOtherBoolean xsi:type="boolean">false<boolean>
 	</complexType>
 </DPSerialization><DPSerialization>
 	<complexType xsi:type="genericCheckpointing.util.MyAllTypesSecond">
-		<MyDoubleT xsi:type="double">4658.499344<double>
-		<MyFloatT xsi:type="float">16.9<float>
-		<MyShortT xsi:type="short">25606<short>
-		<MyCharT xsi:type="char">j<char>
-	</complexType>
-</DPSerialization><DPSerialization>
-	<complexType xsi:type="genericCheckpointing.util.MyAllTypesFirst">
-		<MyInt xsi:type="int">361966439<int>
-		<MyLong xsi:type="long">4073354862<long>
-		<MyString xsi:type="String">DneKnR<String>
-		<MyBoolean xsi:type="boolean">true<boolean>
-		<MyOtherBoolean xsi:type="boolean">false<boolean>
-	</complexType>
-</DPSerialization><DPSerialization>
-	<complexType xsi:type="genericCheckpointing.util.MyAllTypesSecond">
-		<MyDoubleT xsi:type="double">45.7823<double>
-		<MyFloatT xsi:type="float">7.5467787<float>
-		<MyShortT xsi:type="short">1356<short>
-		<MyCharT xsi:type="char">G<char>
+		<MyDoubleT xsi:type="double">99.793<double>
+		<MyFloatT xsi:type="float">96.23<float>
+		<MyShortT xsi:type="short">5241<short>
+		<MyCharT xsi:type="char">D<char>
 	</complexType>
 </DPSerialization>
