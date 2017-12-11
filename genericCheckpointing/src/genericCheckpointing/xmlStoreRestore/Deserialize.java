@@ -5,9 +5,44 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import genericCheckpointing.util.SerializableObject;
+import genericCheckpointing.util.MyAllTypesFirst;
+import genericCheckpointing.util.MyAllTypesSecond;
+import genericCheckpointing.util.FileProcessor;
 
 public class Deserialize {
     public Deserialize() {
+        
+    }           
+
+    
+    public SerializableObject start(FileProcessor reader) {
+        
+        SerializableObject ret = null;
+        String line = null;
+        
+        boolean startReading = false;
+        while(true) {
+            
+            //Get a line from the fileprocessor
+            line = reader.readFile();
+            
+            if(line.contains("MyAllTypesFirst")){
+                ret = new MyAllTypesFirst();
+                startReading = true;
+            }
+            else if(line.contains("MyAllTypesSecond")){
+                ret = new MyAllTypesSecond();
+                startReading = true;
+            }
+            else if(line.equals("\t</complexType>")) {
+                break;
+            }
+            else if(startReading) {
+                convert(ret, line);
+            }
+
+        }
+        return ret;
         
     }
     

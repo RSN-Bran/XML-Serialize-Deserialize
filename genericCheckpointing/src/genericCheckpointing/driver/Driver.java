@@ -62,7 +62,7 @@ public class Driver {
                                      new Class[] {
                                          StoreI.class, RestoreI.class
                                      }, 
-                                     new StoreRestoreHandler()
+                                     new StoreRestoreHandler(fp)
                                      );
 
         // FIXME: invoke a method on the handler instance to set the file name for checkpointFile and open the file
@@ -75,6 +75,7 @@ public class Driver {
         Vector<SerializableObject> createdObjects = new Vector<SerializableObject>();
         
         if(mode.equals("serdeser")) {
+            fp.startWriting();
                 // Use an if/switch to proceed according to the command line argument
         // For deser, just deserliaze the input file into the data structure and then print the objects
         // The code below is for "serdeser" mode
@@ -97,34 +98,25 @@ public class Driver {
             ((StoreI) cpointRef).writeObj(mySecond, "XML");
 
            }
-
+            
+            fp.closeWriting();
+            
+            
+            fp.startReading();
            SerializableObject myRecordRet;
-
+            
+            Vector<SerializableObject> readObjs = new Vector<SerializableObject>();
            // create a data structure to store the returned ojects
            for (int j=0; j<2*numObjs; j++) {
 
                myRecordRet = ((RestoreI) cpointRef).readObj("XML");
+               readObjs.add(myRecordRet);
             // FIXME: store myRecordRet in the vector
            }
-            
-            Serialize serialize = new Serialize();
-            Vector<String> outputLines = new Vector<String>();
-            for(int i = 0; i < createdObjects.size(); i++) {
-                outputLines.add("<DPSerialization>\n");
-                outputLines.add("\t<complexType xsi:type=\"" +  createdObjects.get(i).getClass().getName() + "\">\n");
-                    
-                outputLines.add(serialize.convert(createdObjects.get(i)));
-                
-                outputLines.add("\t</complexType>\n");
-                if(i == createdObjects.size()-1) {
-                    outputLines.add("</DPSerialization>");
-                }
-                else {
-                    outputLines.add("</DPSerialization>\n");
-                }
-                
+            fp.closeReading();
+            for(int i = 0; i < readObjs.size(); i++) {
+                System.out.println(readObjs.get(i).toString());
             }
-            fp.writeFile(outputLines);
 
         // FIXME: invoke a method on the handler to close the file (if it hasn't already been closed)
 
@@ -133,11 +125,24 @@ public class Driver {
         // is used for key-value based data structures
 
         }
-        Vector<SerializableObject> readObjects = new Vector<SerializableObject>();
-        
-        fp.readFile(readObjects);
-        for(int i = 0; i < readObjects.size(); i++) {
-            System.out.println(readObjects.get(i).toString());
+        else {
+            fp.startReading();
+            
+            Vector<SerializableObject> readObjs = new Vector<SerializableObject>();
+            
+            SerializableObject myRecordRet;
+            for(int i = 0; i < numObjs; i++) {
+                myRecordRet = ((RestoreI) cpointRef).readObj("XML");
+                readObjs.add(myRecordRet);
+            }
+            fp.closeReading();
+            for(int i = 0; i < readObjs.size(); i++) {
+                System.out.println(readObjs.get(i).toString());
+            }
         }
+
+        
+        //fp.readFile(readObjects);
+
     }
 }

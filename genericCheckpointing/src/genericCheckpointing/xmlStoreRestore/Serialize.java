@@ -5,12 +5,26 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import genericCheckpointing.util.SerializableObject;
+import genericCheckpointing.util.FileProcessor;
 
 public class Serialize {
+    
+    
     public Serialize() {
         
     }
     
+    
+    public void start(SerializableObject obj, FileProcessor writer) {
+        String str = "";
+        str = str + "<DPSerialization>\n";
+        str = str + "\t<complexType xsi:type=\"" +  obj.getClass().getName() + "\">\n";
+        str = str + convert(obj);
+        str = str + "\t</complexType>\n";
+        str = str + "</DPSerialization>";
+                
+        writer.writeFile(str);
+    }
     public String convert(SerializableObject obj) {
         String ret = "";
         

@@ -78,14 +78,30 @@ public class MyAllTypesSecond extends SerializableObject {
     
     public String toString() {
         String str = "";
-        str = str + "myDouble: " + MyDoubleT + "\n";
-        str = str + "myFloat: " + MyFloatT + "\n";
-        str = str + "myShort: " + MyShortT + "\n";
-        str = str + "myChar: " + MyCharT + "\n";
-        str = str + "myOtherDouble: " + MyOtherDoubleT + "\n";
-        str = str + "myOtherFloat: " + MyOtherFloatT + "\n";
-        str = str + "myOtherShort: " + MyOtherShortT + "\n";
-        str = str + "myOtherChar: " + MyOtherCharT + "\n";
+        if(MyDoubleT > 0) {
+            str = str + "myDoubleT: " + MyDoubleT + "\n";
+        }
+        if(MyFloatT > 0) {
+            str = str + "myFloatT: " + MyFloatT + "\n";
+        }
+        if(MyShortT > 0) {
+            str = str + "myShortT: " + MyShortT + "\n";
+        }
+        if(MyCharT != '\u0000') {
+            str = str + "myCharT: " + MyCharT + "\n";
+        }
+        if(MyOtherDoubleT > 0) {
+            str = str + "myOtherDoubleT: " + MyOtherDoubleT + "\n";
+        }
+        if(MyOtherFloatT > 0) {
+            str = str + "myOtherFloatT: " + MyOtherFloatT + "\n";
+        }
+        if(MyOtherShortT > 0) {
+            str = str + "myShortT: " + MyOtherShortT + "\n";
+        }
+        if(MyOtherCharT != '\u0000') {
+            str = str + "myCharT: " + MyOtherCharT + "\n";
+        }
         
         return str;
     }

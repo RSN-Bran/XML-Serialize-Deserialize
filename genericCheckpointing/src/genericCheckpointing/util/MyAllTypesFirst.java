@@ -76,13 +76,25 @@ public class MyAllTypesFirst extends SerializableObject {
     
     public String toString() {
         String str = "";
-        str = str + "myInt: " + MyInt + "\n";
-        str = str + "myLong: " + MyLong + "\n";
-        str = str + "myString: " + MyString + "\n";
+        if(MyInt > 0) {
+            str = str + "myInt: " + MyInt + "\n";
+        }
+        if(MyLong > 0) {
+            str = str + "myLong: " + MyLong + "\n";
+        }
+        if(MyString != null ) {
+            str = str + "myString: " + MyString + "\n";
+        }
         str = str + "myBoolean: " + MyBoolean + "\n";
-        str = str + "myOtherInt: " + MyOtherInt + "\n";
-        str = str + "myOtherLong: " + MyOtherLong + "\n";
-        str = str + "myOtherString: " + MyOtherString + "\n";
+        if(MyOtherInt > 0) {
+            str = str + "myOtherInt: " + MyOtherInt + "\n";
+        }
+        if(MyOtherLong > 0) {
+            str = str + "myOtherLong: " + MyOtherLong + "\n";
+        }
+        if(MyOtherString != null ) {
+            str = str + "myOtherString: " + MyOtherString + "\n";
+        }
         str = str + "myOtherBoolean: " + MyOtherBoolean + "\n";
         
         return str;
